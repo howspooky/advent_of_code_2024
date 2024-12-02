@@ -10,7 +10,7 @@ import (
 	"strconv"
 )
 
-func main() {
+func day1() {
 	input, err := os.Open("inputs/day1.txt")
 	if err != nil {
 		panic(fmt.Errorf("failed to open input file: %w", err))
