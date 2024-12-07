@@ -1,10 +1,23 @@
-package main
+package cmd
 
 import (
 	"bufio"
 	"fmt"
 	"os"
+
+	"github.com/spf13/cobra"
 )
+
+func init() {
+	rootCmd.AddCommand(day4Cmd)
+}
+
+var day4Cmd = &cobra.Command{
+	Use: "day4",
+	Run: func(cmd *cobra.Command, args []string) {
+		day4()
+	},
+}
 
 func day4() {
 	input, err := os.Open("inputs/day4.txt")
@@ -74,7 +87,7 @@ func day4() {
 			}
 		}
 	}
-	println("part1: ", part1) // 2414
+	fmt.Println("part1: ", part1) // 2414
 
 	corners := [][2]int{
 		{-1, -1},
@@ -122,7 +135,7 @@ func day4() {
 			}
 		}
 	}
-	println("part2: ", part2) // 1871
+	fmt.Println("part2: ", part2) // 1871
 }
 
 func withinBounds(grid [][]rune, y int, x int) bool {

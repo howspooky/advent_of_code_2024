@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"bufio"
@@ -8,7 +8,20 @@ import (
 	"regexp"
 	"sort"
 	"strconv"
+
+	"github.com/spf13/cobra"
 )
+
+func init() {
+	rootCmd.AddCommand(day1Cmd)
+}
+
+var day1Cmd = &cobra.Command{
+	Use: "day1",
+	Run: func(cmd *cobra.Command, args []string) {
+		day1()
+	},
+}
 
 func day1() {
 	input, err := os.Open("inputs/day1.txt")
@@ -51,7 +64,7 @@ func day1() {
 	}
 
 	// part 1:  2375403
-	println("part 1: ", dif)
+	fmt.Println("part 1: ", dif)
 
 	dif = 0
 	for i := 0; i < len(a); i++ {
@@ -67,5 +80,5 @@ func day1() {
 	}
 
 	// part 2:  23082277
-	println("part 2: ", dif)
+	fmt.Println("part 2: ", dif)
 }

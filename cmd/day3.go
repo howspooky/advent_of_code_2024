@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"bufio"
@@ -6,7 +6,20 @@ import (
 	"os"
 	"regexp"
 	"strconv"
+
+	"github.com/spf13/cobra"
 )
+
+func init() {
+	rootCmd.AddCommand(day3Cmd)
+}
+
+var day3Cmd = &cobra.Command{
+	Use: "day3",
+	Run: func(cmd *cobra.Command, args []string) {
+		day3()
+	},
+}
 
 var MUL = 0
 var DO = 1
@@ -57,7 +70,7 @@ func day3() {
 			part1 += instr[1] * instr[2]
 		}
 	}
-	println("part1: ", part1) // 174960292
+	fmt.Println("part1: ", part1) // 174960292
 
 	enabled := true
 	part2 := 0
@@ -73,5 +86,5 @@ func day3() {
 			}
 		}
 	}
-	println("part2: ", part2) // 56275602
+	fmt.Println("part2: ", part2) // 56275602
 }

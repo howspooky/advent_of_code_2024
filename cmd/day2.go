@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"bufio"
@@ -7,7 +7,20 @@ import (
 	"os"
 	"regexp"
 	"strconv"
+
+	"github.com/spf13/cobra"
 )
+
+func init() {
+	rootCmd.AddCommand(day2Cmd)
+}
+
+var day2Cmd = &cobra.Command{
+	Use: "day2",
+	Run: func(cmd *cobra.Command, args []string) {
+		day2()
+	},
+}
 
 func day2() {
 	input, err := os.Open("inputs/day2.txt")
@@ -48,7 +61,7 @@ func day2() {
 		}
 	}
 
-	println("part1: ", safe) // 631
+	fmt.Println("part1: ", safe) // 631
 
 	safe = 0
 	for i := 0; i < len(lines); i++ {
@@ -65,7 +78,7 @@ func day2() {
 		}
 	}
 
-	println("part2: ", safe) // 665
+	fmt.Println("part2: ", safe) // 665
 }
 
 func remove(slice []int, index int) []int {
